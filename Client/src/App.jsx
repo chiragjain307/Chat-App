@@ -4,6 +4,9 @@ import io from 'socket.io-client'
 
 const socket = io.connect('http://192.168.0.106:3001')
 
+// for vercel deployment
+// const socket = io.connect('https://chat-app-server-ivory-omega.vercel.app:3001')
+
 function App() {
   const [message, setMessage] = useState('')
   const [room, setRoom] = useState('')
@@ -17,7 +20,6 @@ function App() {
   const handleButton = () => {
     socket.emit('send_message', {message, room})
     setMessage('')
-    
   }
   
   useEffect(() => {
